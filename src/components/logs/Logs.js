@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import LogItem from './LogItem';
 import Preloader from '../../components/layout/Preloader';
+import PropTypes from 'prop-types';
+import { getLogs } from '../../actions/logActions';
 
-const Logs = () => {
-  const [logs, setLogs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+const Logs = ({ log: { logs, loading }, getLogs }) => {
   useEffect(() => {
     // get all the logs
     getLogs();
@@ -13,18 +13,7 @@ const Logs = () => {
     // eslint-disable-next-line
   }, []);
 
-  const getLogs = async () => {
-    setLoading(true);
-
-    const res = await fetch('/logs');
-    const data = await res.json();
-
-    setLogs(data);
-
-    setLoading(false);
-  };
-
-  if (loading) {
+  if (loading || logs === null) {
     return <Preloader />;
   }
 
@@ -42,4 +31,17 @@ const Logs = () => {
   );
 };
 
-export default Logs;
+Logs.propTypes = {
+  log: PropTypes.object.isRequired,
+  getLogs: PropTypes.func.isRequired,
+};
+
+// Bring props from app level state
+const mapStateToProps = (state) => ({
+  // log is available to this component now
+  log: state.log,
+});
+
+// GREAT EXPLANATION OF connect() and mapStateToProps()
+// https://react-redux.js.org/using-react-redux/connect-mapstate
+export default connect(mapStateToProps, { getLogs })(Logs);

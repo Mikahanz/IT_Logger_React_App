@@ -1,25 +1,25 @@
 {
   "logs": [
     {
-      "id": 1,
       "message": "Changed hard drive on workstation 005",
       "attention": false,
-      "date": "03-02-2019",
-      "tech": "Sam Smith"
+      "tech": "Sara Wilson",
+      "date": "2020-08-07T15:31:52.779Z",
+      "id": 1
     },
     {
       "id": 2,
-      "message": "Workstation 007 not posting",
+      "message": "Fix harddrive on laptop 30",
       "attention": true,
-      "date": "03-02-2019",
-      "tech": "John Doe"
+      "tech": "John Doe",
+      "date": "2020-08-07T18:13:34.423Z"
     },
     {
       "id": 3,
-      "message": "Changed memory on workstation 050",
-      "attention": false,
-      "date": "03-02-2019",
-      "tech": "Sara Wilson"
+      "message": "Please fIx the Computer",
+      "attention": true,
+      "tech": "Mikamon hanzel",
+      "date": "2020-08-07T22:41:21.849Z"
     }
   ],
   "techs": [
@@ -37,6 +37,11 @@
       "id": 3,
       "firstName": "Sara",
       "lastName": "Wilson"
+    },
+    {
+      "firstName": "Jack",
+      "lastName": "Nana",
+      "id": 5
     }
   ]
 }
